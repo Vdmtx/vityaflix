@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261015-4">
+  <link rel="stylesheet" href="style.css?v=20261015-6">
 </head>
 <body>
   <aside class="sidebar">
@@ -18,6 +18,7 @@
       <button class="nav-item active" data-action="home"><span>⌂</span>Início</button>
       <button class="nav-item" data-action="movies"><span>▣</span>Filmes</button>
       <button class="nav-item" data-action="series"><span>▥</span>Séries</button>
+      <button class="nav-item" data-action="anime"><span>◈</span>Animes</button>
       <button class="nav-item" data-action="categories"><span>▤</span>Categorias</button>
     </nav>
     <div class="drive-box"><strong>Biblioteca pessoal</strong><span>Google Drive</span><small>Filmes, séries e animes</small></div>
@@ -29,6 +30,13 @@
       <div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Buscar filmes..."></div>
       <div class="avatar">V</div>
     </header>
+
+    <nav class="mobile-tabs" aria-label="Navegação principal">
+      <button class="nav-item active" data-action="home">Início</button>
+      <button class="nav-item" data-action="movies">Filmes</button>
+      <button class="nav-item" data-action="series">Séries</button>
+      <button class="nav-item" data-action="anime">Animes</button>
+    </nav>
 
     <section class="hero">
       <div class="hero-art" aria-hidden="true"><div class="moon"></div><div class="mountains m1"></div><div class="mountains m2"></div><div class="city"></div><div class="water"></div></div>
@@ -44,6 +52,7 @@
 
     <section id="catalog" class="catalog"></section>
     <section id="seriesView" class="catalog series-view" hidden></section>
+    <section id="animeView" class="catalog series-view" hidden></section>
   </main>
 
   <div id="playerModal" class="player-modal" aria-hidden="true">
@@ -58,7 +67,7 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
-  <script src="app.js?v=20261015-4"></script>
-  <script src="series.js?v=20261015-1"></script>
+  <script src="app.js?v=20261015-6"></script>
+  <script src="series.js?v=20261015-3"></script>
 </body>
 </html>
