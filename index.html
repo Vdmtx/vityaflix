@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261015-2">
+  <link rel="stylesheet" href="style.css?v=20261015-4">
 </head>
 <body>
   <aside class="sidebar">
@@ -17,9 +17,10 @@
     <nav>
       <button class="nav-item active" data-action="home"><span>⌂</span>Início</button>
       <button class="nav-item" data-action="movies"><span>▣</span>Filmes</button>
+      <button class="nav-item" data-action="series"><span>▥</span>Séries</button>
       <button class="nav-item" data-action="categories"><span>▤</span>Categorias</button>
     </nav>
-    <div class="drive-box"><strong>Biblioteca pessoal</strong><span>Google Drive</span><small>Somente a pasta “filmes”</small></div>
+    <div class="drive-box"><strong>Biblioteca pessoal</strong><span>Google Drive</span><small>Filmes, séries e animes</small></div>
   </aside>
 
   <main>
@@ -42,6 +43,7 @@
     </section>
 
     <section id="catalog" class="catalog"></section>
+    <section id="seriesView" class="catalog series-view" hidden></section>
   </main>
 
   <div id="playerModal" class="player-modal" aria-hidden="true">
@@ -56,6 +58,7 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
-  <script src="app.js?v=20261015-2"></script>
+  <script src="app.js?v=20261015-4"></script>
+  <script src="series.js?v=20261015-1"></script>
 </body>
 </html>
