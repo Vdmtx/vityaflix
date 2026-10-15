@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261015-6">
+  <link rel="stylesheet" href="style.css?v=20261015-7">
 </head>
 <body>
   <aside class="sidebar">
@@ -62,13 +62,17 @@
         <button id="closePlayer" class="close-player" aria-label="Fechar player">×</button>
       </div>
       <div class="player-frame-wrap"><iframe id="drivePlayer" title="Player do Google Drive" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-      <div class="player-actions"><button id="openDriveFallback" class="secondary">Abrir no Google Drive</button></div>
+      <div class="player-actions">
+        <button id="prevEpisode" class="secondary" hidden>← Capítulo anterior</button>
+        <button id="nextEpisode" class="primary" hidden>Próximo capítulo →</button>
+      </div>
     </div>
   </div>
 
   <div id="toast" class="toast" role="status"></div>
-  <script src="app.js?v=20261015-6"></script>
-  <script src="series.js?v=20261015-3"></script>
-  <script src="series-seasons.js?v=20261015-1"></script>
+  <script src="app.js?v=20261015-7"></script>
+  <script src="series.js?v=20261015-4"></script>
+  <script src="series-seasons.js?v=20261015-2"></script>
+  <script src="episode-nav.js?v=20261015-1"></script>
 </body>
 </html>
