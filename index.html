@@ -12,63 +12,47 @@
 </head>
 <body>
   <aside class="sidebar">
-    <div class="brand small">
-      <div class="brand-main">Витя<span>Фликс</span></div>
-      <div class="brand-sub">Vityaflix</div>
-    </div>
+    <div class="brand small"><div class="brand-main">Витя<span>Фликс</span></div><div class="brand-sub">Vityaflix</div></div>
     <nav>
       <button class="nav-item active" data-action="home"><span>⌂</span>Início</button>
       <button class="nav-item" data-action="movies"><span>▣</span>Filmes</button>
       <button class="nav-item" data-action="categories"><span>▤</span>Categorias</button>
-      <button class="nav-item" data-action="favorites"><span>♡</span>Minha lista</button>
-      <button class="nav-item" data-action="explore"><span>◉</span>Explorar</button>
     </nav>
-    <div class="drive-box">
-      <strong>Biblioteca pessoal</strong>
-      <span>Google Drive</span>
-      <small>Escopo: pasta “filmes”</small>
-    </div>
+    <div class="drive-box"><strong>Biblioteca pessoal</strong><span>Google Drive</span><small>Somente a pasta “filmes”</small></div>
   </aside>
 
   <main>
     <header class="topbar">
-      <div class="brand mobile">
-        <div class="brand-main">Витя<span>Фликс</span></div>
-        <div class="brand-sub">Vityaflix</div>
-      </div>
-      <div class="search-wrap">
-        <span>⌕</span>
-        <input id="search" type="search" placeholder="Buscar filmes...">
-      </div>
-      <div class="top-icons"><button aria-label="Notificações">♢</button><div class="avatar">V</div></div>
+      <div class="brand mobile"><div class="brand-main">Витя<span>Фликс</span></div><div class="brand-sub">Vityaflix</div></div>
+      <div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Buscar filmes..."></div>
+      <div class="avatar">V</div>
     </header>
 
     <section class="hero">
-      <div class="hero-art" aria-hidden="true">
-        <div class="moon"></div>
-        <div class="mountains m1"></div>
-        <div class="mountains m2"></div>
-        <div class="city"></div>
-        <div class="water"></div>
-      </div>
-      <div class="brand hero-brand">
-        <div class="brand-main">Витя<span>Фликс</span></div>
-        <div class="brand-sub">Vityaflix</div>
-      </div>
+      <div class="hero-art" aria-hidden="true"><div class="moon"></div><div class="mountains m1"></div><div class="mountains m2"></div><div class="city"></div><div class="water"></div></div>
+      <div class="brand hero-brand"><div class="brand-main">Витя<span>Фликс</span></div><div class="brand-sub">Vityaflix</div></div>
       <div class="hero-content">
         <div class="eyebrow">DESTAQUE</div>
-        <h1 id="heroTitle">Transcendence: A Revolução</h1>
-        <p id="heroText">Tecnologia, consciência e os limites entre o homem e a máquina.</p>
-        <div class="hero-meta"><span id="heroYear">2014</span><span>720p preferencial</span><span id="heroCat">Ficção científica</span></div>
-        <div class="hero-actions">
-          <button class="primary" id="playFeatured">▶ Assistir agora</button>
-          <button class="secondary" id="moreInfo">Mais informações</button>
-        </div>
+        <h1 id="heroTitle">Prometheus</h1>
+        <p id="heroText">Acesso direto ao arquivo da sua videoteca pelo player do Google Drive.</p>
+        <div class="hero-meta"><span id="heroYear">2012</span><span>720p preferencial</span><span id="heroCat">Ficção científica</span></div>
+        <div class="hero-actions"><button class="primary" id="playFeatured">▶ Assistir agora</button><button class="secondary" id="openFeatured">Abrir no Drive</button></div>
       </div>
     </section>
 
     <section id="catalog" class="catalog"></section>
   </main>
+
+  <div id="playerModal" class="player-modal" aria-hidden="true">
+    <div class="player-shell">
+      <div class="player-topbar">
+        <div><strong id="playerTitle">Filme</strong><span id="playerMeta"></span></div>
+        <button id="closePlayer" class="close-player" aria-label="Fechar player">×</button>
+      </div>
+      <div class="player-frame-wrap"><iframe id="drivePlayer" title="Player do Google Drive" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <div class="player-actions"><button id="openDriveFallback" class="secondary">Abrir no Google Drive</button></div>
+    </div>
+  </div>
 
   <div id="toast" class="toast" role="status"></div>
   <script src="app.js"></script>
