@@ -1,0 +1,36 @@
+// Oitava etapa: Zillion completo encontrado na raiz autorizada de animes.
+// Ignora NCOP/NCED, trailer, comercial e music video; mantém somente os 31 episódios.
+
+animeDetails['Akai Koudan Zillion']=[{name:'Temporada 1',kind:'episodes',episodes:[
+ ['Akai Koudan Zillion - 01','14gM-VDzlja5TZ2271ipjafV_i-2u5Wq_'],
+ ['Akai Koudan Zillion - 02','1v0N0so6e664XPfMuVAivkEFoiDIH9eY2'],
+ ['Akai Koudan Zillion - 03','1SBiT8PVDe6tZk_w1RC-LA6Yz6bO4MXJ4'],
+ ['Akai Koudan Zillion - 04','1fINcqfLgMpdV5WCOJerlkv4bKJ4ZS28V'],
+ ['Akai Koudan Zillion - 05','1kqvfMqkpR7nWVdjUvbyFkpoPT-vDN7Pn'],
+ ['Akai Koudan Zillion - 06','1pqPdwrgYUb9Zb433-q-pLmquC_wxxs2o'],
+ ['Akai Koudan Zillion - 07','1YL0FOfepsjEkjyESTd3FZmABFawsFxpS'],
+ ['Akai Koudan Zillion - 08','1muXUsW9pv732l37sv2-YBvne3c2d3JQL'],
+ ['Akai Koudan Zillion - 09','1G9ALHj-ZFY2d1wIyClIkazEP5a95RDlM'],
+ ['Akai Koudan Zillion - 10','1TqG8H-THT7FELbLcp0Bvw3JF95mz5kN4'],
+ ['Akai Koudan Zillion - 11','1Kg6RVtiQ44rSr6dnmuzch082ZoG_j6QD'],
+ ['Akai Koudan Zillion - 12','1QBIRaUe58lS0agynOhwUmGVpAXEX0aBr'],
+ ['Akai Koudan Zillion - 13','1Iu8ux7yimccyzfUq1T6WkWOXvTVQj8Gb'],
+ ['Akai Koudan Zillion - 14','1S5jBIgH3GmI-VpvDaGb-rdgCXxy9VsEe'],
+ ['Akai Koudan Zillion - 15','1HuCr7BUttuiqeihPTWCJdWAzbWHpDIch'],
+ ['Akai Koudan Zillion - 16','1jSIPAykVfnIVnYgZkPq8tPepVMHAVD6x'],
+ ['Akai Koudan Zillion - 17','1MwtwAZcA4I_HG4LX5sLZevPQNBlGboZA'],
+ ['Akai Koudan Zillion - 18','1E7inETYZvbzrbEqULnChCePmx1_zUnHj'],
+ ['Akai Koudan Zillion - 19','1BMgU7-gR9m16i8Bfb_2uAtffX2MOj1lK'],
+ ['Akai Koudan Zillion - 20','1U0w_7Y3IAp75dYXZaTOzgAaRYnQxBmFk'],
+ ['Akai Koudan Zillion - 21','18DPGaZay3pfgK_XT1U9IGhcnWWqIjcGH'],
+ ['Akai Koudan Zillion - 22','1lcY-Qrey--Gpg3H1rDLWuWc21U7AKTiQ'],
+ ['Akai Koudan Zillion - 23','1MEsLRr4UoIcGzf9-I0fWRmC1yIoSHgdS'],
+ ['Akai Koudan Zillion - 24','1mlMZ9WSOz8KnxdWjw6dj1jh5ES5SwwZN'],
+ ['Akai Koudan Zillion - 25','17ebnwziJ1YvnYK93ZGvUuAD4Qoe0obTv'],
+ ['Akai Koudan Zillion - 26','1wZdkCLjexp5yv7ZYESvqY6n-p3uUzm1a'],
+ ['Akai Koudan Zillion - 27','1WmWGV4l7efOEtDiv_dVHkVyNpgLhX3d9'],
+ ['Akai Koudan Zillion - 28','197s7g8WG0HOlRlUKes7Mz9KvXe2otN8-'],
+ ['Akai Koudan Zillion - 29','1s8UF_bUdb8q33tCfuADI9YXpLzMHKXp_'],
+ ['Akai Koudan Zillion - 30','1rPPE5eELNXDWktyFS4kLEaEicq_GsrZz'],
+ ['Akai Koudan Zillion - 31 END','1p-4sQqIil4rEG5gbrhX2LmPxd6cLX4tl']
+]}];
