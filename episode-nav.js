@@ -14,7 +14,8 @@ function updateEpisodeNav(){
   const next=document.querySelector('#nextEpisode');
   if(!prev||!next)return;
   const active=episodeQueue.length>0&&episodeIndex>=0;
-  prev.hidden=!active; next.hidden=!active;
+  prev.hidden=!active;
+  next.hidden=!active;
   prev.disabled=!active||episodeIndex<=0;
   next.disabled=!active||episodeIndex>=episodeQueue.length-1;
 }
@@ -30,48 +31,60 @@ function moveEpisode(delta){
 document.querySelector('#prevEpisode')?.addEventListener('click',()=>moveEpisode(-1));
 document.querySelector('#nextEpisode')?.addEventListener('click',()=>moveEpisode(1));
 
+function appendSeasonBlocks(holder,title,seasons){
+  seasons.forEach(season=>{
+    const sec=document.createElement('section');
+    sec.className='season-block';
+    const ready=season.kind==='episodes'&&Array.isArray(season.episodes)&&season.episodes.length>0;
+    sec.innerHTML=`<div class="category-head"><h2>${season.name}</h2><span>${ready?season.episodes.length+' arquivos':'aguardando catalogação'}</span></div><div class="movie-list"></div>`;
+    const list=sec.querySelector('.movie-list');
+    if(ready){
+      season.episodes.forEach(([name,id],i)=>{
+        const b=document.createElement('button');
+        b.className='movie-item';
+        b.innerHTML=`<div><div class="movie-name">${name}</div><div class="movie-year">${title} • ${season.name}</div></div><div class="movie-play">▶ Assistir</div>`;
+        b.onclick=()=>playEpisodeSequence(title,season.name,season.episodes,i);
+        list.appendChild(b);
+      });
+    }else{
+      list.innerHTML='<div class="empty" style="grid-column:1/-1">Esta temporada ainda não tem arquivos individualizados no catálogo.</div>';
+    }
+    holder.appendChild(sec);
+  });
+}
+
 // Série > temporadas > episódios. Pastas sem episódios catalogados não abrem o Drive.
 renderSeriesDetail=function(s){
   const details=seriesDetails[s.title]||[];
   seriesView.innerHTML=`<div class="series-detail-head"><button class="back-btn" id="backSeries">← Séries</button><div><span class="eyebrow">SÉRIE</span><h1>${s.title}</h1></div></div><div id="seasonBlocks"></div>`;
   document.querySelector('#backSeries').onclick=()=>renderSeriesList(searchBox.value);
   const holder=seriesView.querySelector('#seasonBlocks');
-  if(!details.length){holder.innerHTML='<div class="empty">Episódios ainda não catalogados no Vityaflix.</div>';return;}
-  details.forEach(season=>{
-    const sec=document.createElement('section'); sec.className='season-block';
-    const ready=season.kind==='episodes'&&Array.isArray(season.episodes)&&season.episodes.length;
-    sec.innerHTML=`<div class="category-head"><h2>${season.name}</h2><span>${ready?season.episodes.length+' episódios':'aguardando catalogação'}</span></div><div class="movie-list"></div>`;
-    const list=sec.querySelector('.movie-list');
-    if(ready){
-      season.episodes.forEach(([name,id],i)=>{
-        const b=document.createElement('button'); b.className='movie-item';
-        b.innerHTML=`<div><div class="movie-name">${name}</div><div class="movie-year">${s.title} • ${season.name}</div></div><div class="movie-play">▶ Assistir</div>`;
-        b.onclick=()=>playEpisodeSequence(s.title,season.name,season.episodes,i);
-        list.appendChild(b);
-      });
-    }else{
-      list.innerHTML='<div class="empty" style="grid-column:1/-1">Esta temporada ainda não tem episódios individualizados no catálogo.</div>';
-    }
-    holder.appendChild(sec);
-  });
+  if(!details.length){
+    holder.innerHTML='<div class="empty">Episódios ainda não catalogados no Vityaflix.</div>';
+    return;
+  }
+  appendSeasonBlocks(holder,s.title,details);
 };
 
-// Anime > série > episódios. Sem links diretos para pastas.
+// Anime > temporadas/OVAs/especiais > episódios. Também mantém compatibilidade com os dados antigos em lista simples.
 renderAnimeDetail=function(a){
   animeView.innerHTML=`<div class="series-detail-head"><button class="back-btn" id="backAnime">← Animes</button><div><span class="eyebrow">ANIME</span><h1>${a.title}</h1></div></div><div id="animeEpisodeBlock"></div>`;
   animeView.querySelector('#backAnime').onclick=()=>renderAnimeHome(searchBox.value);
   const holder=animeView.querySelector('#animeEpisodeBlock');
-  const special=animeDetails[a.title];
-  if(!special||!special.length){holder.innerHTML='<div class="empty">Episódios ainda não catalogados no Vityaflix.</div>';return;}
-  const sec=document.createElement('section'); sec.className='season-block';
-  sec.innerHTML=`<div class="category-head"><h2>Temporada / Episódios</h2><span>${special.length} episódios</span></div><div class="movie-list"></div>`;
-  special.forEach(([name,id],i)=>{
-    const b=document.createElement('button'); b.className='movie-item';
-    b.innerHTML=`<div><div class="movie-name">${name}</div><div class="movie-year">${a.title}</div></div><div class="movie-play">▶ Assistir</div>`;
-    b.onclick=()=>playEpisodeSequence(a.title,'Anime',special,i);
-    sec.querySelector('.movie-list').appendChild(b);
-  });
-  holder.appendChild(sec);
+  const details=animeDetails[a.title];
+  if(!details||!details.length){
+    holder.innerHTML='<div class="empty">Episódios ainda não catalogados no Vityaflix.</div>';
+    return;
+  }
+
+  // Formato legado: [[nome,id], ...].
+  if(Array.isArray(details[0])){
+    appendSeasonBlocks(holder,a.title,[{name:'Episódios',kind:'episodes',episodes:details}]);
+    return;
+  }
+
+  // Formato revisado: [{name:'Temporada 1',kind:'episodes',episodes:[...]}].
+  appendSeasonBlocks(holder,a.title,details);
 };
 
 // Quando um filme comum é aberto, esconde controles de episódio.
@@ -79,7 +92,8 @@ const originalOpenPlayer=openPlayer;
 openPlayer=function(movie){
   originalOpenPlayer(movie);
   if(!episodeQueue.some(e=>e.drive===movie?.drive)){
-    episodeQueue=[]; episodeIndex=-1;
+    episodeQueue=[];
+    episodeIndex=-1;
   }
   updateEpisodeNav();
 };
